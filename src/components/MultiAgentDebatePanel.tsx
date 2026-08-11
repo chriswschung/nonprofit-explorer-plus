@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { NonProfitData } from '../types/nonprofit';
+import { evaluateNonProfitScore } from '../utils/scoreEvaluator';
 import { Users, Bot, FileText, Play, CheckCircle } from 'lucide-react';
 
 interface MultiAgentDebatePanelProps {
@@ -7,7 +8,10 @@ interface MultiAgentDebatePanelProps {
 }
 
 export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ nonprofit }) => {
-  const [activeStep, setActiveStep] = useState<number>(nonprofit.agentDebates.length); // default show all
+  const evaluated = evaluateNonProfitScore(nonprofit);
+  const displayDebates = evaluated.agentDebates.length ? evaluated.agentDebates : nonprofit.agentDebates;
+
+  const [activeStep, setActiveStep] = useState<number>(displayDebates.length); // default show all
   const [isDebating, setIsDebating] = useState<boolean>(false);
 
   const startLiveDebate = () => {
@@ -18,7 +22,7 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
     const interval = setInterval(() => {
       current++;
       setActiveStep(current);
-      if (current >= nonprofit.agentDebates.length) {
+      if (current >= displayDebates.length) {
         clearInterval(interval);
         setIsDebating(false);
       }
@@ -26,8 +30,8 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
   };
 
   const avgScore = (
-    nonprofit.agentDebates.reduce((acc, curr) => acc + curr.scoreGiven, 0) /
-    nonprofit.agentDebates.length
+    displayDebates.reduce((acc, curr) => acc + curr.scoreGiven, 0) /
+    (displayDebates.length || 1)
   ).toFixed(1);
 
   return (
@@ -76,7 +80,7 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
 
       {/* Agents Feed */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
-        {nonprofit.agentDebates.slice(0, activeStep).map((statement, idx) => (
+        {displayDebates.slice(0, activeStep).map((statement, idx) => (
           <div
             key={idx}
             style={{
@@ -136,7 +140,7 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
               </p>
 
               <div style={{ display: 'flex', gap: '0.4rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-                {statement.citations.map((cite, cIdx) => (
+                {(statement.citations || []).map((cite: string, cIdx: number) => (
                   <span
                     key={cIdx}
                     style={{
@@ -159,7 +163,7 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
           </div>
         ))}
 
-        {activeStep >= nonprofit.agentDebates.length && (
+        {activeStep >= displayDebates.length && (
           <div style={{ background: 'rgba(0,255,136,0.06)', padding: '0.85rem 1.1rem', borderRadius: '8px', border: '1px solid rgba(0,255,136,0.25)', display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#00ff88', fontSize: '0.85rem', fontWeight: 600 }}>
             <CheckCircle size={18} /> Multi-Agent Panel Verdict: Unanimous endorsement for high program efficiency and governance transparency.
           </div>

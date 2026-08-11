@@ -1,4 +1,5 @@
 import type { NonProfitData } from '../types/nonprofit';
+import { evaluateNonProfitScore } from '../utils/scoreEvaluator';
 import { Award, CheckCircle2, FileText, TrendingUp, DollarSign, Users, ShieldCheck } from 'lucide-react';
 
 interface RightPaneProps {
@@ -6,10 +7,14 @@ interface RightPaneProps {
 }
 
 export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
+  const evaluated = evaluateNonProfitScore(nonprofit);
+  const displayScore = evaluated.overallScore;
+  const displayRatings = evaluated.ratings.length ? evaluated.ratings : nonprofit.ratings;
+
   const getScoreColor = (score: number) => {
-    if (score >= 9.0) return 'var(--accent-emerald)';
-    if (score >= 8.0) return 'var(--accent-blue)';
-    if (score >= 7.0) return '#f59e0b';
+    if (score >= 8.5) return 'var(--accent-emerald)';
+    if (score >= 7.5) return 'var(--accent-blue)';
+    if (score >= 6.5) return '#f59e0b';
     return '#f43f5e';
   };
 
@@ -41,9 +46,9 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
           </span>
         </div>
 
-        <div style={{ textAlign: 'center', background: 'rgba(11, 15, 25, 0.9)', padding: '0.5rem 1.2rem', borderRadius: '8px', border: '1px solid var(--accent-emerald)' }}>
-          <span style={{ fontSize: '1.8rem', color: 'var(--accent-emerald)', fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
-            {nonprofit.overallScore}
+        <div style={{ textAlign: 'center', background: 'rgba(11, 15, 25, 0.9)', padding: '0.5rem 1.2rem', borderRadius: '8px', border: `1px solid ${getScoreColor(displayScore)}` }}>
+          <span style={{ fontSize: '1.8rem', color: getScoreColor(displayScore), fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
+            {displayScore}
           </span>
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}> / 10</span>
         </div>
@@ -66,7 +71,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
             border: '1px solid var(--border-subtle)'
           }}
         >
-          {nonprofit.ratings.map((rating, idx) => {
+          {displayRatings.map((rating, idx) => {
             const color = getScoreColor(rating.score);
             const shortTitle = rating.dimension.replace(/^\d+\.\s*/, '');
             return (
@@ -174,7 +179,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
           <Award size={16} color="var(--accent-blue)" /> Detailed Dimensional Analysis & Reasoning
         </h3>
 
-        {nonprofit.ratings.map((rating, idx) => {
+        {displayRatings.map((rating, idx) => {
           const scoreColor = getScoreColor(rating.score);
           return (
             <div
