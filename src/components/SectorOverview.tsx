@@ -219,19 +219,19 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
             <span style={{ fontSize: '1.15rem', color: 'var(--accent-blue)', fontWeight: 700 }}>{formatCurrency(totalSectorRevenue)}</span>
           </div>
 
-          <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '0.75rem 0.9rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ background: 'var(--bg-main)', padding: '0.75rem 0.9rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
             <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase', letterSpacing: '0.5px' }}>AVG PROGRAM SPEND %</span>
             <span style={{ fontSize: '1.15rem', color: 'var(--accent-emerald)', fontWeight: 700 }}>{avgProgramEfficiency}%</span>
           </div>
 
-          <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '0.75rem 0.9rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ background: 'var(--bg-main)', padding: '0.75rem 0.9rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
             <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase', letterSpacing: '0.5px' }}>AVG GOVERNANCE RATING</span>
-            <span style={{ fontSize: '1.15rem', color: '#818cf8', fontWeight: 700 }}>{avgGovernanceScore} / 10</span>
+            <span style={{ fontSize: '1.15rem', color: 'var(--accent-indigo)', fontWeight: 700 }}>{avgGovernanceScore} / 10</span>
           </div>
 
-          <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '0.75rem 0.9rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ background: 'var(--bg-main)', padding: '0.75rem 0.9rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
             <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase', letterSpacing: '0.5px' }}>TOP RANKED ORGANIZER</span>
-            <span style={{ fontSize: '0.88rem', color: '#f59e0b', fontWeight: 700, display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <span style={{ fontSize: '0.88rem', color: 'var(--accent-amber)', fontWeight: 700, display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {topRankedOrg ? topRankedOrg.name : 'N/A'}
             </span>
           </div>
@@ -242,8 +242,8 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
       <div className="glass-card" style={{ padding: '1.25rem', position: 'relative', overflow: 'hidden' }}>
         
         {/* Dynamic Axis Selector Bar */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.75rem', background: 'rgba(15, 23, 42, 0.7)', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: '#fff', fontWeight: 700 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.75rem', background: 'var(--bg-main)', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: 700 }}>
             <Sliders size={16} color="var(--accent-blue)" /> Customize Chart Axes:
           </div>
 
@@ -255,8 +255,8 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
                 value={xAxisId}
                 onChange={(e) => setXAxisId(e.target.value)}
                 style={{
-                  background: 'rgba(11, 15, 25, 0.9)',
-                  color: '#fff',
+                  background: 'var(--bg-card)',
+                  color: 'var(--text-primary)',
                   border: '1px solid var(--accent-blue)',
                   padding: '0.35rem 0.6rem',
                   borderRadius: '6px',
@@ -281,8 +281,8 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
                 value={yAxisId}
                 onChange={(e) => setYAxisId(e.target.value)}
                 style={{
-                  background: 'rgba(11, 15, 25, 0.9)',
-                  color: '#fff',
+                  background: 'var(--bg-card)',
+                  color: 'var(--text-primary)',
                   border: '1px solid var(--accent-emerald)',
                   padding: '0.35rem 0.6rem',
                   borderRadius: '6px',
@@ -304,15 +304,15 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
 
         {/* SVG Canvas */}
         <div style={{ width: '100%', overflowX: 'auto' }}>
-          <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} style={{ width: '100%', height: 'auto', background: 'rgba(11, 15, 25, 0.9)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+          <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} style={{ width: '100%', height: 'auto', background: 'var(--bg-main)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
             
             {/* Y-Axis Grid Lines & Tick Labels */}
             {yAxisMetric.gridTicks.map((val) => {
               const y = getY(val);
               return (
                 <g key={`y-grid-${val}`}>
-                  <line x1={padding.left} y1={y} x2={svgWidth - padding.right} y2={y} stroke="rgba(255,255,255,0.06)" strokeDasharray="3 3" />
-                  <text x={padding.left - 8} y={y + 4} fill="#64748b" fontSize="10" textAnchor="end">
+                  <line x1={padding.left} y1={y} x2={svgWidth - padding.right} y2={y} stroke="var(--border-subtle)" strokeDasharray="3 3" />
+                  <text x={padding.left - 8} y={y + 4} fill="var(--text-muted)" fontSize="10" textAnchor="end">
                     {yAxisMetric.formatValue(val)}
                   </text>
                 </g>
@@ -324,8 +324,8 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
               const x = getX(val);
               return (
                 <g key={`x-grid-${val}`}>
-                  <line x1={x} y1={padding.top} x2={x} y2={svgHeight - padding.bottom} stroke="rgba(255,255,255,0.06)" strokeDasharray="3 3" />
-                  <text x={x} y={svgHeight - padding.bottom + 18} fill="#64748b" fontSize="10" textAnchor="middle">
+                  <line x1={x} y1={padding.top} x2={x} y2={svgHeight - padding.bottom} stroke="var(--border-subtle)" strokeDasharray="3 3" />
+                  <text x={x} y={svgHeight - padding.bottom + 18} fill="var(--text-muted)" fontSize="10" textAnchor="middle">
                     {xAxisMetric.formatValue(val)}
                   </text>
                 </g>
@@ -348,7 +348,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
               const y = getY(yVal);
               const radius = getRadius(np.totalRevenue);
               const isHovered = hoveredOrg?.id === np.id;
-              const color = isHovered ? 'var(--accent-blue)' : 'rgba(56, 189, 248, 0.45)';
+              const color = isHovered ? 'var(--accent-blue)' : 'rgba(2, 132, 199, 0.45)';
 
               return (
                 <g key={np.id} style={{ cursor: 'pointer' }}>
@@ -405,7 +405,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
             style={{
               marginTop: '0.85rem',
               padding: '0.85rem 1rem',
-              background: 'var(--bg-sidebar)',
+              background: 'var(--bg-card)',
               border: '1px solid var(--accent-blue)',
               borderRadius: '8px',
               display: 'flex',
@@ -416,7 +416,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
             }}
           >
             <div>
-              <div style={{ color: '#fff', fontWeight: 700, fontSize: '0.92rem' }}>{hoveredOrg.name}</div>
+              <div style={{ color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.92rem' }}>{hoveredOrg.name}</div>
               <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', marginTop: '0.1rem' }}>
                 EIN: {hoveredOrg.ein} • {hoveredOrg.nteeCategory}
               </div>
@@ -425,7 +425,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <div>
                 <span style={{ fontSize: '0.68rem', color: 'var(--accent-blue)', display: 'block', fontWeight: 600 }}>{xAxisMetric.shortLabel.toUpperCase()}</span>
-                <span style={{ color: '#fff', fontWeight: 'bold', fontSize: '0.85rem' }}>{xAxisMetric.formatValue(xAxisMetric.getValue(hoveredOrg))}</span>
+                <span style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '0.85rem' }}>{xAxisMetric.formatValue(xAxisMetric.getValue(hoveredOrg))}</span>
               </div>
 
               <div>
@@ -435,12 +435,12 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
 
               <div>
                 <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'block' }}>REVENUE</span>
-                <span style={{ color: '#fff', fontWeight: 'bold', fontSize: '0.85rem' }}>{formatCurrency(hoveredOrg.totalRevenue)}</span>
+                <span style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '0.85rem' }}>{formatCurrency(hoveredOrg.totalRevenue)}</span>
               </div>
 
               <div>
                 <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'block' }}>SCORE</span>
-                <span style={{ color: '#f59e0b', fontWeight: '800', fontSize: '1rem' }}>{hoveredOrg.overallScore}/10</span>
+                <span style={{ color: 'var(--accent-amber)', fontWeight: '800', fontSize: '1rem' }}>{hoveredOrg.overallScore}/10</span>
               </div>
 
               <button
@@ -449,7 +449,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
                   onViewScorecard(hoveredOrg.id);
                 }}
                 style={{
-                  background: 'rgba(56, 189, 248, 0.15)',
+                  background: 'rgba(2, 132, 199, 0.15)',
                   color: 'var(--accent-blue)',
                   border: '1px solid var(--accent-blue)',
                   padding: '0.4rem 0.8rem',
@@ -471,8 +471,8 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
 
       {/* 3. Sector Leaderboard Table */}
       <div className="glass-card" style={{ padding: '1.25rem' }}>
-        <h3 style={{ color: '#fff', fontSize: '1rem', margin: '0 0 0.85rem 0', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-          <Award size={16} color="#f59e0b" />
+        <h3 style={{ color: 'var(--text-primary)', fontSize: '1rem', margin: '0 0 0.85rem 0', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+          <Award size={16} color="var(--accent-amber)" />
           Sector Leaderboard
         </h3>
 
@@ -494,13 +494,13 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
                 <tr
                   key={np.id}
                   style={{
-                    borderBottom: '1px solid rgba(255,255,255,0.03)',
+                    borderBottom: '1px solid var(--border-subtle)',
                     transition: 'background 0.15s ease'
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-card-hover)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
-                  <td style={{ padding: '0.6rem 0.4rem', fontWeight: 600, color: '#fff' }}>
+                  <td style={{ padding: '0.6rem 0.4rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                     {np.name}
                     <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>EIN: {np.ein}</div>
                   </td>
@@ -510,7 +510,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
                   <td style={{ padding: '0.6rem 0.4rem', color: (np.revenueGrowthCAGR || 0) >= 0 ? 'var(--accent-emerald)' : 'var(--accent-rose)' }}>
                     {(np.revenueGrowthCAGR || 0) > 0 ? '+' : ''}{np.revenueGrowthCAGR}%
                   </td>
-                  <td style={{ padding: '0.6rem 0.4rem', color: '#f59e0b', fontWeight: 700 }}>{np.overallScore} / 10</td>
+                  <td style={{ padding: '0.6rem 0.4rem', color: 'var(--accent-amber)', fontWeight: 700 }}>{np.overallScore} / 10</td>
                   <td style={{ padding: '0.6rem 0.4rem', textAlign: 'right' }}>
                     <button
                       onClick={() => {
