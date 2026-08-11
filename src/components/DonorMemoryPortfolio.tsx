@@ -43,7 +43,7 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
           <div style={{ fontSize: '0.72rem', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 700 }}>
             VERTEX AI MEMORY BANK & DONOR LEDGER
           </div>
-          <h2 style={{ fontSize: '1.2rem', color: '#fff', margin: '0.2rem 0 0 0', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <h2 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', margin: '0.2rem 0 0 0', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Bookmark size={20} color="var(--accent-blue)" /> Donor Portfolio & Running Impact Tab
           </h2>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0.2rem 0 0 0' }}>
@@ -51,14 +51,14 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
           </p>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(56, 189, 248, 0.1)', padding: '0.45rem 0.85rem', borderRadius: '6px', border: '1px solid rgba(56, 189, 248, 0.25)', color: 'var(--accent-blue)', fontSize: '0.78rem', fontWeight: 700 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(2, 132, 199, 0.1)', padding: '0.45rem 0.85rem', borderRadius: '6px', border: '1px solid rgba(2, 132, 199, 0.25)', color: 'var(--accent-blue)', fontSize: '0.78rem', fontWeight: 700 }}>
           <ShieldCheck size={14} /> PERSISTED MEMORY ACTIVE
         </div>
       </div>
 
       {/* 1. RUNNING TAB HIGHLIGHT CARDS (Total Donated, Tax Savings, Field Outputs) */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.85rem' }}>
-        <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+        <div style={{ background: 'var(--bg-main)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
           <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem', textTransform: 'uppercase', fontWeight: 700 }}>
             <DollarSign size={13} color="var(--accent-emerald)" /> TOTAL PLEDGED & DONATED
           </span>
@@ -70,7 +70,7 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
           </span>
         </div>
 
-        <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+        <div style={{ background: 'var(--bg-main)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
           <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem', textTransform: 'uppercase', fontWeight: 700 }}>
             <Receipt size={13} color="var(--accent-blue)" /> ESTIMATED TAX SAVINGS
           </span>
@@ -82,26 +82,26 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
           </span>
         </div>
 
-        <div style={{ background: 'rgba(15, 23, 42, 0.8)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+        <div style={{ background: 'var(--bg-main)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
           <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem', textTransform: 'uppercase', fontWeight: 700 }}>
-            <Sparkles size={13} color="#f59e0b" /> AGGREGATED FIELD OUTPUTS
+            <Sparkles size={13} color="var(--accent-amber)" /> AGGREGATED FIELD OUTPUTS
           </span>
-          <span style={{ fontSize: '1.2rem', color: '#fff', fontWeight: 800, marginTop: '0.2rem', display: 'block' }}>
+          <span style={{ fontSize: '1.2rem', color: 'var(--text-primary)', fontWeight: 800, marginTop: '0.2rem', display: 'block' }}>
             {donations.length > 0 ? `${donations.reduce((sum, d) => sum + d.quantifiableImpactUnits, 0).toLocaleString()} Units Funded` : '0 Outputs'}
           </span>
-          <span style={{ fontSize: '0.72rem', color: '#f59e0b', display: 'block', marginTop: '0.2rem', fontWeight: 600 }}>
+          <span style={{ fontSize: '0.72rem', color: 'var(--accent-amber)', display: 'block', marginTop: '0.2rem', fontWeight: 600 }}>
             Direct Mission Accomplishments
           </span>
         </div>
       </div>
 
       {/* 2. QUICK DONATE TO ACTIVE PROFILE CARD */}
-      <div style={{ background: 'rgba(11, 15, 25, 0.85)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--accent-blue)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+      <div style={{ background: 'var(--bg-main)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--accent-blue)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
           <span style={{ fontSize: '0.7rem', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 700 }}>
             ACTIVE PROFILE DONATION
           </span>
-          <h3 style={{ fontSize: '1rem', color: '#fff', margin: '0.1rem 0 0 0', fontWeight: 700 }}>
+          <h3 style={{ fontSize: '1rem', color: 'var(--text-primary)', margin: '0.1rem 0 0 0', fontWeight: 700 }}>
             Pledge a Donation to <span style={{ color: 'var(--accent-emerald)' }}>{currentNonProfit.name}</span>
           </h3>
         </div>
@@ -113,9 +113,9 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
             onChange={(e) => setCustomDonateAmount(Math.max(10, Number(e.target.value)))}
             style={{
               width: '110px',
-              background: 'rgba(15, 23, 42, 0.9)',
+              background: 'var(--bg-card)',
               border: '1px solid var(--border-subtle)',
-              color: '#fff',
+              color: 'var(--text-primary)',
               padding: '0.45rem 0.65rem',
               borderRadius: '6px',
               fontSize: '0.85rem',
@@ -128,7 +128,7 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
             style={{
               background: 'var(--accent-emerald)',
               border: 'none',
-              color: '#000',
+              color: '#fff',
               padding: '0.5rem 1rem',
               borderRadius: '6px',
               cursor: 'pointer',
@@ -145,7 +145,7 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
       </div>
 
       {/* 3. QUICK ORGANIZATION SELECTOR TO DONATE TO OTHER INDEXED NON-PROFITS */}
-      <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '0.85rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+      <div style={{ background: 'var(--bg-main)', padding: '0.85rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
         <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.3rem', marginBottom: '0.5rem' }}>
           <Building2 size={13} color="var(--accent-blue)" /> EXPLORE INDEXED ORGANIZATIONS ({allNonProfits.length})
         </span>
@@ -156,14 +156,14 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
               key={np.id}
               onClick={() => onSelectNonProfit(np.id)}
               style={{
-                background: np.id === currentNonProfit.id ? 'rgba(56, 189, 248, 0.15)' : 'rgba(11, 15, 25, 0.7)',
+                background: np.id === currentNonProfit.id ? 'rgba(2, 132, 199, 0.15)' : 'var(--bg-card)',
                 border: np.id === currentNonProfit.id ? '1px solid var(--accent-blue)' : '1px solid var(--border-subtle)',
-                color: np.id === currentNonProfit.id ? '#38bdf8' : 'var(--text-secondary)',
+                color: np.id === currentNonProfit.id ? 'var(--accent-blue)' : 'var(--text-secondary)',
                 padding: '0.3rem 0.6rem',
                 borderRadius: '6px',
                 fontSize: '0.75rem',
                 cursor: 'pointer',
-                fontWeight: np.id === currentNonProfit.id ? 700 : 400
+                fontWeight: np.id === currentNonProfit.id ? 700 : 500
               }}
             >
               {np.name} ({np.overallScore}/10)
@@ -174,12 +174,12 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
 
       {/* 4. RUNNING DONATION LEDGER TABLE */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-        <h3 style={{ fontSize: '0.92rem', color: '#fff', margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+        <h3 style={{ fontSize: '0.92rem', color: 'var(--text-primary)', margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
           <Calculator size={16} color="var(--accent-emerald)" /> Running Donation Ledger & Tax Receipts ({donations.length})
         </h3>
 
         {donations.length === 0 ? (
-          <div style={{ background: 'rgba(15, 23, 42, 0.5)', padding: '1.5rem', textAlign: 'center', borderRadius: '8px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+          <div style={{ background: 'var(--bg-main)', padding: '1.5rem', textAlign: 'center', borderRadius: '8px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
             No donation pledges recorded yet. Select an organization and click "DONATE" to add to your running impact tab!
           </div>
         ) : (
@@ -200,9 +200,9 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
                 {donations.map((pledge) => (
                   <tr
                     key={pledge.id}
-                    style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', background: 'rgba(15, 23, 42, 0.4)' }}
+                    style={{ borderBottom: '1px solid var(--border-subtle)', background: 'var(--bg-main)' }}
                   >
-                    <td style={{ padding: '0.55rem 0.4rem', fontWeight: 700, color: '#fff' }}>
+                    <td style={{ padding: '0.55rem 0.4rem', fontWeight: 700, color: 'var(--text-primary)' }}>
                       {pledge.nonprofitName}
                     </td>
                     <td style={{ padding: '0.55rem 0.4rem', color: 'var(--text-secondary)', fontSize: '0.72rem' }}>
@@ -214,7 +214,7 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
                     <td style={{ padding: '0.55rem 0.4rem', color: 'var(--accent-blue)', fontWeight: 700 }}>
                       +${pledge.estimatedTaxSavings.toLocaleString()}
                     </td>
-                    <td style={{ padding: '0.55rem 0.4rem', color: '#f59e0b', fontWeight: 600, fontSize: '0.75rem' }}>
+                    <td style={{ padding: '0.55rem 0.4rem', color: 'var(--accent-amber)', fontWeight: 600, fontSize: '0.75rem' }}>
                       ~{pledge.quantifiableImpactUnits} {pledge.quantifiableImpactUnitName}
                     </td>
                     <td style={{ padding: '0.55rem 0.4rem', color: 'var(--text-muted)', fontSize: '0.72rem' }}>
@@ -223,7 +223,7 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
                     <td style={{ padding: '0.55rem 0.4rem', textAlign: 'right' }}>
                       <button
                         onClick={() => onRemoveDonation(pledge.id)}
-                        style={{ background: 'none', border: 'none', color: '#f43f5e', cursor: 'pointer', padding: '2px' }}
+                        style={{ background: 'none', border: 'none', color: '#e11d48', cursor: 'pointer', padding: '2px' }}
                         title="Remove Pledge"
                       >
                         <Trash2 size={14} />
@@ -238,14 +238,14 @@ export const DonorMemoryPortfolio: React.FC<DonorMemoryPortfolioProps> = ({
       </div>
 
       {/* 5. PREFERENCES SUMMARY CARD */}
-      <div style={{ background: 'rgba(15,23,42,0.6)', padding: '0.85rem', borderRadius: '8px', border: '1px solid var(--border-subtle)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.85rem', fontSize: '0.78rem' }}>
+      <div style={{ background: 'var(--bg-main)', padding: '0.85rem', borderRadius: '8px', border: '1px solid var(--border-subtle)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.85rem', fontSize: '0.78rem' }}>
         <div>
           <span style={{ color: 'var(--text-muted)', display: 'block' }}>MIN PROGRAM SPEND TARGET</span>
           <span style={{ color: 'var(--accent-emerald)', fontWeight: 700, fontSize: '0.95rem' }}>&gt;= {preferences.minProgramSpendRatio}%</span>
         </div>
         <div>
           <span style={{ color: 'var(--text-muted)', display: 'block' }}>MAX CEO PAY CAP</span>
-          <span style={{ color: '#818cf8', fontWeight: 700, fontSize: '0.95rem' }}>&lt;= ${(preferences.maxCeoPayThreshold / 1000000).toFixed(1)}M</span>
+          <span style={{ color: 'var(--accent-indigo)', fontWeight: 700, fontSize: '0.95rem' }}>&lt;= ${(preferences.maxCeoPayThreshold / 1000000).toFixed(1)}M</span>
         </div>
         <div>
           <span style={{ color: 'var(--text-muted)', display: 'block' }}>MEMORY PERSISTENCE STATUS</span>

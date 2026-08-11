@@ -71,9 +71,9 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
             <Play size={15} /> {isDebating ? 'DEBATE IN PROGRESS...' : 'RE-RUN AGENT DEBATE'}
           </button>
 
-          <div style={{ background: 'rgba(15,23,42,0.85)', padding: '0.5rem 1rem', borderRadius: '8px', border: '1px solid rgba(0,255,136,0.3)', textAlign: 'right' }}>
-            <span style={{ fontSize: '0.68rem', color: '#94a3b8', display: 'block' }}>PANEL CONSENSUS</span>
-            <span style={{ fontSize: '1.2rem', color: '#00ff88', fontWeight: 800 }}>{avgScore} / 10</span>
+          <div style={{ background: 'var(--bg-main)', padding: '0.5rem 1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)', textAlign: 'right' }}>
+            <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'block' }}>PANEL CONSENSUS</span>
+            <span style={{ fontSize: '1.2rem', color: 'var(--accent-emerald)', fontWeight: 800 }}>{avgScore} / 10</span>
           </div>
         </div>
       </div>
@@ -84,10 +84,10 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
           <div
             key={idx}
             style={{
-              background: 'rgba(15,23,42,0.65)',
+              background: 'var(--bg-main)',
               padding: '1.1rem',
               borderRadius: '10px',
-              border: `1px solid ${statement.avatarColor}30`,
+              border: `1px solid var(--border-subtle)`,
               display: 'flex',
               gap: '1rem',
               alignItems: 'flex-start'
@@ -103,16 +103,16 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexShrink: 0,
-                boxShadow: `0 0 12px ${statement.avatarColor}60`
+                boxShadow: `0 0 12px ${statement.avatarColor}40`
               }}
             >
-              <Bot size={22} color="#000" />
+              <Bot size={22} color="#fff" />
             </div>
 
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '0.4rem' }}>
                 <div>
-                  <span style={{ fontSize: '0.95rem', color: '#fff', fontWeight: 700, display: 'block' }}>
+                  <span style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 700, display: 'block' }}>
                     {statement.agentName}
                   </span>
                   <span style={{ fontSize: '0.75rem', color: statement.avatarColor, fontWeight: 600 }}>
@@ -135,7 +135,7 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
                 </span>
               </div>
 
-              <p style={{ fontSize: '0.86rem', color: '#e2e8f0', margin: 0, lineHeight: '1.5' }}>
+              <p style={{ fontSize: '0.86rem', color: 'var(--text-primary)', margin: 0, lineHeight: '1.5', fontWeight: 500 }}>
                 "{statement.statement}"
               </p>
 
@@ -145,8 +145,9 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
                     key={cIdx}
                     style={{
                       fontSize: '0.7rem',
-                      background: 'rgba(255,255,255,0.06)',
-                      color: '#94a3b8',
+                      background: 'var(--bg-card)',
+                      color: 'var(--text-secondary)',
+                      border: '1px solid var(--border-subtle)',
                       padding: '1px 6px',
                       borderRadius: '4px',
                       fontFamily: 'monospace',
@@ -164,7 +165,7 @@ export const MultiAgentDebatePanel: React.FC<MultiAgentDebatePanelProps> = ({ no
         ))}
 
         {activeStep >= displayDebates.length && (
-          <div style={{ background: 'rgba(0,255,136,0.06)', padding: '0.85rem 1.1rem', borderRadius: '8px', border: '1px solid rgba(0,255,136,0.25)', display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#00ff88', fontSize: '0.85rem', fontWeight: 600 }}>
+          <div style={{ background: 'rgba(5, 150, 105, 0.08)', padding: '0.85rem 1.1rem', borderRadius: '8px', border: '1px solid rgba(5, 150, 105, 0.3)', display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--accent-emerald)', fontSize: '0.85rem', fontWeight: 700 }}>
             <CheckCircle size={18} /> Multi-Agent Panel Verdict: Unanimous endorsement for high program efficiency and governance transparency.
           </div>
         )}

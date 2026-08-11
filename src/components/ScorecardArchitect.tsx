@@ -144,7 +144,7 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
       {/* 1. Header Card */}
       <div className="glass-card" style={{ padding: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <h2 style={{ color: '#fff', fontSize: '1.2rem', margin: 0, fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <h2 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', margin: 0, fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Scale size={20} color="var(--accent-blue)" />
             Scorecard Architect Agent
           </h2>
@@ -156,7 +156,7 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
         <button
           onClick={handleResetWeights}
           style={{
-            background: 'rgba(56, 189, 248, 0.1)',
+            background: 'rgba(2, 132, 199, 0.1)',
             border: '1px solid var(--border-subtle)',
             color: 'var(--accent-blue)',
             padding: '0.4rem 0.85rem',
@@ -177,15 +177,15 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
         {/* 2. Left Column: Interactive Sliding Scale Sliders */}
         <div className="glass-card" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h3 style={{ fontSize: '0.95rem', color: '#fff', margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <h3 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <Sliders size={16} color="var(--accent-blue)" /> Customize Your Donor Weights
             </h3>
             <span
               style={{
                 fontSize: '0.75rem',
-                color: totalWeightSum === 100 ? 'var(--accent-emerald)' : '#f59e0b',
+                color: totalWeightSum === 100 ? 'var(--accent-emerald)' : 'var(--accent-amber)',
                 fontWeight: 700,
-                background: 'rgba(15, 23, 42, 0.8)',
+                background: 'var(--bg-main)',
                 padding: '2px 8px',
                 borderRadius: '4px',
                 border: '1px solid var(--border-subtle)'
@@ -204,7 +204,7 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
                 <div
                   key={dim.key}
                   style={{
-                    background: 'rgba(15, 23, 42, 0.6)',
+                    background: 'var(--bg-main)',
                     padding: '0.85rem 1rem',
                     borderRadius: '8px',
                     border: '1px solid var(--border-subtle)',
@@ -214,7 +214,7 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '0.85rem', color: '#fff', fontWeight: 700 }}>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: 700 }}>
                       {dim.name}
                     </span>
                     <span style={{ fontSize: '0.82rem', color: 'var(--accent-blue)', fontWeight: 800 }}>
@@ -256,7 +256,7 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
                   width: '32px',
                   height: '32px',
                   borderRadius: '50%',
-                  background: 'rgba(56, 189, 248, 0.15)',
+                  background: 'rgba(2, 132, 199, 0.12)',
                   border: '1px solid var(--accent-blue)',
                   display: 'flex',
                   alignItems: 'center',
@@ -266,11 +266,11 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
                 <Bot size={18} color="var(--accent-blue)" />
               </div>
               <div>
-                <h3 style={{ fontSize: '0.95rem', color: '#fff', margin: 0, fontWeight: 700 }}>
+                <h3 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', margin: 0, fontWeight: 700 }}>
                   Architect Agent Impact Synthesis
                 </h3>
                 <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                  Active Non-Profit: <strong style={{ color: '#fff' }}>{nonprofit.name}</strong>
+                  Active Non-Profit: <strong style={{ color: 'var(--text-primary)' }}>{nonprofit.name}</strong>
                 </span>
               </div>
             </div>
@@ -281,7 +281,7 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
                 gap: '0.85rem',
-                background: 'rgba(11, 15, 25, 0.9)',
+                background: 'var(--bg-main)',
                 padding: '0.85rem',
                 borderRadius: '8px',
                 border: '1px solid var(--border-subtle)',
@@ -304,7 +304,7 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
             </div>
 
             {/* Agent Narrative Response */}
-            <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '0.85rem', borderRadius: '6px', borderLeft: '3px solid var(--accent-blue)', fontSize: '0.8rem', color: 'var(--text-primary)', lineHeight: '1.5' }}>
+            <div style={{ background: 'var(--bg-main)', padding: '0.85rem', borderRadius: '6px', borderLeft: '3px solid var(--accent-blue)', fontSize: '0.8rem', color: 'var(--text-primary)', lineHeight: '1.5' }}>
               <span style={{ color: 'var(--accent-blue)', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>
                 💡 Agent Insight:
               </span>
@@ -317,8 +317,8 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
 
           {/* Sector Leaderboard Shifts Table */}
           <div className="glass-card" style={{ padding: '1.25rem' }}>
-            <h3 style={{ fontSize: '0.92rem', color: '#fff', margin: '0 0 0.85rem 0', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <Award size={16} color="#f59e0b" /> Re-Ranked Sector Leaderboard ({nonprofit.nteeCategory})
+            <h3 style={{ fontSize: '0.92rem', color: 'var(--text-primary)', margin: '0 0 0.85rem 0', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <Award size={16} color="var(--accent-amber)" /> Re-Ranked Sector Leaderboard ({nonprofit.nteeCategory})
             </h3>
 
             <div style={{ overflowX: 'auto' }}>
@@ -337,15 +337,15 @@ export const ScorecardArchitect: React.FC<ScorecardArchitectProps> = ({
                       key={peer.id}
                       onClick={() => onSelectNonProfit(peer.id)}
                       style={{
-                        borderBottom: '1px solid rgba(255,255,255,0.03)',
+                        borderBottom: '1px solid var(--border-subtle)',
                         cursor: 'pointer',
-                        background: peer.id === nonprofit.id ? 'rgba(56, 189, 248, 0.1)' : 'transparent'
+                        background: peer.id === nonprofit.id ? 'rgba(2, 132, 199, 0.08)' : 'transparent'
                       }}
                     >
-                      <td style={{ padding: '0.5rem 0.3rem', fontWeight: 800, color: idx === 0 ? '#f59e0b' : 'var(--text-muted)' }}>
+                      <td style={{ padding: '0.5rem 0.3rem', fontWeight: 800, color: idx === 0 ? 'var(--accent-amber)' : 'var(--text-muted)' }}>
                         #{idx + 1}
                       </td>
-                      <td style={{ padding: '0.5rem 0.3rem', fontWeight: 600, color: '#fff' }}>
+                      <td style={{ padding: '0.5rem 0.3rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                         {peer.name}
                       </td>
                       <td style={{ padding: '0.5rem 0.3rem', color: 'var(--text-secondary)' }}>

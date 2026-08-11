@@ -107,7 +107,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
   return (
     <div
       style={{
-        background: 'rgba(15, 23, 42, 0.65)',
+        background: 'var(--bg-main)',
         border: '1px solid var(--border-subtle)',
         borderRadius: '10px',
         padding: '1rem',
@@ -118,10 +118,10 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
     >
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h3 style={{ fontSize: '0.95rem', color: '#fff', margin: 0, display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700 }}>
+        <h3 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', margin: 0, display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700 }}>
           <MessageSquare size={16} color="var(--accent-blue)" /> Ask 990 AI Assistant: <span style={{ color: 'var(--accent-emerald)' }}>{nonprofit.name}</span>
         </h3>
-        <span style={{ fontSize: '0.7rem', color: 'var(--accent-emerald)', background: 'rgba(16, 185, 129, 0.1)', padding: '2px 6px', borderRadius: '4px', border: '1px solid rgba(16, 185, 129, 0.25)', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
+        <span style={{ fontSize: '0.7rem', color: 'var(--accent-emerald)', background: 'rgba(5, 150, 105, 0.1)', padding: '2px 6px', borderRadius: '4px', border: '1px solid rgba(5, 150, 105, 0.25)', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
           <Sparkles size={11} /> 990 Citation Engine
         </span>
       </div>
@@ -133,13 +133,14 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
             key={idx}
             onClick={() => handleSendMessage(chip)}
             style={{
-              background: 'rgba(56, 189, 248, 0.08)',
-              border: '1px solid rgba(56, 189, 248, 0.2)',
+              background: 'rgba(2, 132, 199, 0.08)',
+              border: '1px solid rgba(2, 132, 199, 0.2)',
               color: 'var(--accent-blue)',
               padding: '0.25rem 0.6rem',
               borderRadius: '12px',
               fontSize: '0.72rem',
               cursor: 'pointer',
+              fontWeight: 600,
               transition: 'all 0.15s ease'
             }}
           >
@@ -151,7 +152,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
       {/* Messages Stream */}
       <div
         style={{
-          background: 'rgba(11, 15, 25, 0.9)',
+          background: 'var(--bg-card)',
           border: '1px solid var(--border-subtle)',
           borderRadius: '8px',
           padding: '0.85rem',
@@ -173,23 +174,24 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
             }}
           >
             {msg.sender === 'assistant' && (
-              <div style={{ width: '26px', height: '28px', borderRadius: '50%', background: 'rgba(56, 189, 248, 0.2)', border: '1px solid var(--accent-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: '26px', height: '28px', borderRadius: '50%', background: 'rgba(2, 132, 199, 0.15)', border: '1px solid var(--accent-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Bot size={14} color="var(--accent-blue)" />
               </div>
             )}
 
             <div
               style={{
-                background: msg.sender === 'user' ? 'rgba(56, 189, 248, 0.2)' : 'rgba(15, 23, 42, 0.8)',
-                color: '#fff',
+                background: msg.sender === 'user' ? 'rgba(2, 132, 199, 0.12)' : 'var(--bg-main)',
+                color: 'var(--text-primary)',
                 padding: '0.6rem 0.85rem',
                 borderRadius: msg.sender === 'user' ? '10px 10px 2px 10px' : '10px 10px 10px 2px',
-                border: msg.sender === 'assistant' ? '1px solid var(--border-subtle)' : '1px solid rgba(56, 189, 248, 0.3)',
+                border: msg.sender === 'assistant' ? '1px solid var(--border-subtle)' : '1px solid rgba(2, 132, 199, 0.3)',
                 fontSize: '0.8rem',
-                lineHeight: '1.45'
+                lineHeight: '1.45',
+                fontWeight: 500
               }}
             >
-              <div style={{ fontSize: '0.68rem', color: msg.sender === 'user' ? 'var(--accent-blue)' : 'var(--text-muted)', marginBottom: '0.2rem', display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ fontSize: '0.68rem', color: msg.sender === 'user' ? 'var(--accent-blue)' : 'var(--text-muted)', marginBottom: '0.2rem', display: 'flex', justifyContent: 'space-between', fontWeight: 600 }}>
                 <span>{msg.sender === 'user' ? 'You' : '990 AI Assistant'}</span>
                 <span>{msg.timestamp}</span>
               </div>
@@ -201,13 +203,14 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
                     <span
                       key={cIdx}
                       style={{
-                        background: 'rgba(16, 185, 129, 0.1)',
+                        background: 'rgba(5, 150, 105, 0.1)',
                         color: 'var(--accent-emerald)',
                         padding: '1px 5px',
                         borderRadius: '4px',
-                        border: '1px solid rgba(16, 185, 129, 0.25)',
+                        border: '1px solid rgba(5, 150, 105, 0.25)',
                         fontFamily: 'monospace',
                         fontSize: '0.68rem',
+                        fontWeight: 600,
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.2rem'
@@ -221,7 +224,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
             </div>
 
             {msg.sender === 'user' && (
-              <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: '#818cf8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--accent-indigo)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <User size={14} color="#fff" />
               </div>
             )}
@@ -229,7 +232,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
         ))}
 
         {isTyping && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-blue)', fontSize: '0.78rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-blue)', fontSize: '0.78rem', fontWeight: 600 }}>
             <Bot size={14} /> 990 AI Engine analyzing Form 990 lines...
           </div>
         )}
@@ -250,9 +253,9 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
           onChange={(e) => setInputQuery(e.target.value)}
           style={{
             flex: 1,
-            background: 'rgba(11, 15, 25, 0.9)',
+            background: 'var(--bg-card)',
             border: '1px solid var(--border-subtle)',
-            color: '#fff',
+            color: 'var(--text-primary)',
             padding: '0.55rem 0.85rem',
             borderRadius: '6px',
             fontSize: '0.8rem',
@@ -262,7 +265,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
         <button
           type="submit"
           style={{
-            background: 'rgba(56, 189, 248, 0.2)',
+            background: 'var(--accent-blue)',
             border: '1px solid var(--accent-blue)',
             color: '#fff',
             borderRadius: '6px',
@@ -275,7 +278,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ nonprofit }) => {
             fontSize: '0.8rem'
           }}
         >
-          <Send size={14} color="var(--accent-blue)" /> ASK
+          <Send size={14} color="#fff" /> ASK
         </button>
       </form>
     </div>
