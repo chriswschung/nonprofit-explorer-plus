@@ -23,7 +23,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
       {/* 1. Overall Score Header Badge */}
       <div
         style={{
-          background: 'rgba(15, 23, 42, 0.8)',
+          background: 'var(--bg-card)',
           padding: '1rem 1.25rem',
           borderRadius: '8px',
           border: '1px solid var(--border-subtle)',
@@ -38,7 +38,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
           <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.8px', fontWeight: 700 }}>
             BALANCED 990 EVALUATION SCORE
           </span>
-          <h2 style={{ fontSize: '1.15rem', color: '#fff', margin: '0.15rem 0 0 0', fontWeight: 800 }}>
+          <h2 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', margin: '0.15rem 0 0 0', fontWeight: 800 }}>
             6-Dimensional Audited Scorecard
           </h2>
           <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
@@ -46,7 +46,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
           </span>
         </div>
 
-        <div style={{ textAlign: 'center', background: 'rgba(11, 15, 25, 0.9)', padding: '0.5rem 1.2rem', borderRadius: '8px', border: `1px solid ${getScoreColor(displayScore)}` }}>
+        <div style={{ textAlign: 'center', background: 'var(--bg-main)', padding: '0.5rem 1.2rem', borderRadius: '8px', border: `1px solid ${getScoreColor(displayScore)}` }}>
           <span style={{ fontSize: '1.8rem', color: getScoreColor(displayScore), fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
             {displayScore}
           </span>
@@ -65,7 +65,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
             gap: '0.55rem',
-            background: 'rgba(11, 15, 25, 0.75)',
+            background: 'var(--bg-main)',
             padding: '0.85rem',
             borderRadius: '8px',
             border: '1px solid var(--border-subtle)'
@@ -78,7 +78,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
               <div
                 key={idx}
                 style={{
-                  background: 'rgba(15, 23, 42, 0.7)',
+                  background: 'var(--bg-card)',
                   padding: '0.55rem 0.65rem',
                   borderRadius: '6px',
                   border: `1px solid ${color}35`,
@@ -130,7 +130,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(135px, 1fr))',
           gap: '0.65rem',
-          background: 'rgba(15, 23, 42, 0.5)',
+          background: 'var(--bg-main)',
           padding: '0.85rem',
           borderRadius: '8px',
           border: '1px solid var(--border-subtle)'
@@ -156,18 +156,18 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
 
         <div>
           <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-            <Users size={12} color="#818cf8" /> EST. DONORS COUNT
+            <Users size={12} color="var(--accent-indigo)" /> EST. DONORS COUNT
           </span>
-          <span style={{ fontSize: '0.95rem', color: '#fff', fontWeight: 700 }}>
+          <span style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 700 }}>
             ~{(nonprofit.estimatedDonorsCount || 120000).toLocaleString()}
           </span>
         </div>
 
         <div>
           <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-            <DollarSign size={12} color="#f59e0b" /> AVG DONATION SIZE
+            <DollarSign size={12} color="var(--accent-amber)" /> AVG DONATION SIZE
           </span>
-          <span style={{ fontSize: '0.95rem', color: '#f59e0b', fontWeight: 700 }}>
+          <span style={{ fontSize: '0.95rem', color: 'var(--accent-amber)', fontWeight: 700 }}>
             ~${nonprofit.averageDonationSize || 125} / year
           </span>
         </div>
@@ -175,7 +175,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
 
       {/* 4. Detailed Dimensional Analysis & Reasoning */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <h3 style={{ fontSize: '0.95rem', color: '#fff', margin: 0, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+        <h3 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', margin: 0, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
           <Award size={16} color="var(--accent-blue)" /> Detailed Dimensional Analysis & Reasoning
         </h3>
 
@@ -185,7 +185,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
             <div
               key={idx}
               style={{
-                background: 'rgba(15, 23, 42, 0.6)',
+                background: 'var(--bg-main)',
                 padding: '1rem',
                 borderRadius: '8px',
                 border: '1px solid var(--border-subtle)',
@@ -196,7 +196,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
             >
               {/* Rating Title & Score Badge */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-                <h4 style={{ fontSize: '0.95rem', color: '#fff', margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <h4 style={{ fontSize: '0.95rem', color: 'var(--text-primary)', margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                   <CheckCircle2 size={15} color={scoreColor} /> {rating.dimension}
                 </h4>
 
@@ -226,7 +226,7 @@ export const RightPane: React.FC<RightPaneProps> = ({ nonprofit }) => {
               </p>
 
               {/* Detailed Reasoning Bullet Points */}
-              <div style={{ background: 'rgba(11, 15, 25, 0.7)', padding: '0.75rem', borderRadius: '6px', borderLeft: '2px solid var(--accent-blue)' }}>
+              <div style={{ background: 'var(--bg-card)', padding: '0.75rem', borderRadius: '6px', borderLeft: '2px solid var(--accent-blue)' }}>
                 <span style={{ fontSize: '0.68rem', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 700, display: 'block', marginBottom: '0.3rem' }}>
                   DATA-DRIVEN 990 REASONING:
                 </span>

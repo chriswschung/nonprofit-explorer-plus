@@ -1,9 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-:root {
+:root, [data-theme="light"] {
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
+  /* Modern Light Theme Palette */
+  --bg-main: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-focus: #0284c7;
+
+  /* Primary Accent Colors - Optimized for Light Backgrounds */
+  --accent-blue: #0284c7;
+  --accent-emerald: #059669;
+  --accent-amber: #d97706;
+  --accent-rose: #e11d48;
+  --accent-indigo: #4f46e5;
+
+  /* Text Hierarchy for Light Mode */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --sidebar-width: 270px;
+}
+
+[data-theme="dark"] {
   /* Dignified Dark Slate Color Palette */
   --bg-main: #0b0f19;
   --bg-sidebar: #0f172a;
@@ -12,19 +36,15 @@
   --border-subtle: rgba(255, 255, 255, 0.07);
   --border-focus: rgba(56, 189, 248, 0.4);
 
-  /* Primary Accent Colors - Dignified, Not Flashy */
   --accent-blue: #38bdf8;
   --accent-emerald: #10b981;
   --accent-amber: #f59e0b;
   --accent-rose: #f43f5e;
   --accent-indigo: #6366f1;
 
-  /* Text Hierarchy */
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
-
-  --sidebar-width: 270px;
 }
 
 * {
@@ -42,17 +62,18 @@ body {
   overflow-x: hidden;
 }
 
-/* Glass Card - Dignified & Subtle */
+/* Glass Card - Crisp Light & Dark Support */
 .glass-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-focus);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
 }
 
 /* Custom Scrollbar */
@@ -66,12 +87,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: #cbd5e1;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: #94a3b8;
 }
 
 /* Form Controls */

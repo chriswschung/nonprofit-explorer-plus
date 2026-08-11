@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, Database, X, Globe, Loader2 } from 'lucide-react';
+import { Search, Database, X, Globe, Loader2, Sun, Moon } from 'lucide-react';
 import type { NonProfitData } from '../types/nonprofit';
 import { searchProPublicaLive, fetchProPublicaOrgByEin, type ProPublicaOrgSummary } from '../services/propublicaApi';
 
@@ -24,7 +24,14 @@ export const Header: React.FC<HeaderProps> = ({
   const [searchMode, setSearchMode] = useState<'local' | 'live'>('local');
   const [liveResults, setLiveResults] = useState<ProPublicaOrgSummary[]>([]);
   const [isLoadingLive, setIsLoadingLive] = useState<boolean>(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme);
+  };
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -122,27 +129,27 @@ export const Header: React.FC<HeaderProps> = ({
             }}
             style={{
               width: '100%',
-              background: 'rgba(11, 15, 25, 0.95)',
+              background: 'var(--bg-main)',
               border: isDropdownOpen
                 ? searchMode === 'live' ? '1px solid var(--accent-emerald)' : '1px solid var(--accent-blue)'
                 : '1px solid var(--border-subtle)',
-              color: '#fff',
+              color: 'var(--text-primary)',
               padding: '0.6rem 8.5rem 0.6rem 2.4rem',
               borderRadius: '8px',
               fontSize: '0.85rem',
               outline: 'none',
-              boxShadow: isDropdownOpen ? '0 0 12px rgba(56, 189, 248, 0.15)' : 'none',
+              boxShadow: isDropdownOpen ? '0 0 12px rgba(2, 132, 199, 0.15)' : 'none',
               transition: 'all 0.15s ease'
             }}
           />
 
           {/* Mode Toggle inside search box */}
-          <div style={{ position: 'absolute', right: '35px', display: 'flex', gap: '4px', background: 'rgba(255,255,255,0.05)', padding: '2px', borderRadius: '6px' }}>
+          <div style={{ position: 'absolute', right: '35px', display: 'flex', gap: '4px', background: 'var(--bg-card-hover)', padding: '2px', borderRadius: '6px' }}>
             <button
               onClick={() => setSearchMode('local')}
               style={{
                 background: searchMode === 'local' ? 'var(--accent-blue)' : 'transparent',
-                color: searchMode === 'local' ? '#000' : 'var(--text-muted)',
+                color: searchMode === 'local' ? '#fff' : 'var(--text-muted)',
                 border: 'none',
                 padding: '2px 8px',
                 borderRadius: '4px',
@@ -161,7 +168,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setSearchMode('live')}
               style={{
                 background: searchMode === 'live' ? 'var(--accent-emerald)' : 'transparent',
-                color: searchMode === 'live' ? '#000' : 'var(--text-muted)',
+                color: searchMode === 'live' ? '#fff' : 'var(--text-muted)',
                 border: 'none',
                 padding: '2px 8px',
                 borderRadius: '4px',
@@ -210,12 +217,12 @@ export const Header: React.FC<HeaderProps> = ({
               top: 'calc(100% + 6px)',
               left: 0,
               right: 0,
-              background: 'rgba(15, 23, 42, 0.98)',
+              background: 'var(--bg-card)',
               backdropFilter: 'blur(16px)',
-              border: searchMode === 'live' ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid var(--accent-blue-border)',
+              border: searchMode === 'live' ? '1px solid var(--accent-emerald)' : '1px solid var(--border-subtle)',
               borderRadius: '10px',
               padding: '0.5rem',
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.8)',
+              boxShadow: '0 12px 32px rgba(15, 23, 42, 0.12)',
               zIndex: 9999,
               maxHeight: '380px',
               overflowY: 'auto'
@@ -274,7 +281,7 @@ export const Header: React.FC<HeaderProps> = ({
                       onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                     >
                       <div>
-                        <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                           {org.name}
                           <span style={{ fontSize: '0.65rem', background: 'rgba(16, 185, 129, 0.2)', color: 'var(--accent-emerald)', padding: '1px 5px', borderRadius: '4px' }}>
                             EIN {org.strein}
@@ -313,11 +320,11 @@ export const Header: React.FC<HeaderProps> = ({
                     gap: '0.75rem',
                     transition: 'background 0.15s ease'
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(56, 189, 248, 0.1)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(2, 132, 199, 0.08)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
                   <div style={{ overflow: 'hidden' }}>
-                    <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {np.name}
                     </div>
                     <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '2px' }}>
@@ -340,7 +347,7 @@ export const Header: React.FC<HeaderProps> = ({
         )}
       </div>
 
-      {/* Global Org Counter & Live API Status Indicator */}
+      {/* Global Org Counter, Live API Status, and Light/Dark Mode Switcher */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
         <div
           style={{
@@ -349,8 +356,8 @@ export const Header: React.FC<HeaderProps> = ({
             gap: '0.5rem',
             padding: '0.4rem 0.85rem',
             borderRadius: '20px',
-            background: 'rgba(56, 189, 248, 0.08)',
-            border: '1px solid rgba(56, 189, 248, 0.2)',
+            background: 'rgba(2, 132, 199, 0.08)',
+            border: '1px solid rgba(2, 132, 199, 0.2)',
             fontSize: '0.78rem',
             fontWeight: 600,
             color: 'var(--accent-blue)'
@@ -367,16 +374,47 @@ export const Header: React.FC<HeaderProps> = ({
             gap: '0.4rem',
             padding: '0.4rem 0.85rem',
             borderRadius: '20px',
-            background: 'rgba(16, 185, 129, 0.08)',
-            border: '1px solid rgba(16, 185, 129, 0.2)',
+            background: 'rgba(5, 150, 105, 0.08)',
+            border: '1px solid rgba(5, 150, 105, 0.2)',
             fontSize: '0.78rem',
             fontWeight: 600,
             color: 'var(--accent-emerald)'
           }}
         >
           <Globe size={13} color="var(--accent-emerald)" />
-          <span>ProPublica Live IRS API Ready</span>
+          <span>ProPublica Live IRS API</span>
         </div>
+
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          style={{
+            background: 'var(--bg-main)',
+            border: '1px solid var(--border-subtle)',
+            color: 'var(--text-primary)',
+            padding: '0.4rem 0.8rem',
+            borderRadius: '20px',
+            fontSize: '0.78rem',
+            fontWeight: 700,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
+            transition: 'all 0.2s ease'
+          }}
+          title="Toggle Light / Dark Mode"
+        >
+          {theme === 'light' ? (
+            <>
+              <Sun size={14} color="#d97706" /> Light Mode
+            </>
+          ) : (
+            <>
+              <Moon size={14} color="#38bdf8" /> Dark Mode
+            </>
+          )}
+        </button>
       </div>
     </header>
   );

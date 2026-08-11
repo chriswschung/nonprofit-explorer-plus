@@ -173,7 +173,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
       <div className="glass-card" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <h2 style={{ color: '#fff', fontSize: '1.15rem', margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <h2 style={{ color: 'var(--text-primary)', fontSize: '1.15rem', margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Layers size={18} color="var(--accent-blue)" />
               Sector Overview & Dynamic Form 990 Matrix
             </h2>
@@ -182,10 +182,10 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(15, 23, 42, 0.8)', padding: '0.4rem 0.8rem', borderRadius: '6px', border: '1px solid var(--border-subtle)', fontSize: '0.8rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'var(--bg-main)', padding: '0.4rem 0.8rem', borderRadius: '6px', border: '1px solid var(--border-subtle)', fontSize: '0.8rem' }}>
             <Filter size={14} color="var(--accent-blue)" />
             <span style={{ color: 'var(--text-secondary)' }}>Sector:</span>
-            <strong style={{ color: '#fff' }}>{selectedCategory}</strong>
+            <strong style={{ color: 'var(--text-primary)' }}>{selectedCategory}</strong>
           </div>
         </div>
 
@@ -196,8 +196,8 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               style={{
-                background: selectedCategory === cat ? 'rgba(56, 189, 248, 0.2)' : 'rgba(15, 23, 42, 0.6)',
-                color: selectedCategory === cat ? '#38bdf8' : 'var(--text-secondary)',
+                background: selectedCategory === cat ? 'rgba(2, 132, 199, 0.15)' : 'var(--bg-main)',
+                color: selectedCategory === cat ? 'var(--accent-blue)' : 'var(--text-secondary)',
                 border: selectedCategory === cat ? '1px solid var(--accent-blue)' : '1px solid var(--border-subtle)',
                 padding: '0.3rem 0.65rem',
                 borderRadius: '16px',
@@ -214,7 +214,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
 
         {/* Sector Summary Aggregate Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem' }}>
-          <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '0.75rem 0.9rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ background: 'var(--bg-main)', padding: '0.75rem 0.9rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
             <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase', letterSpacing: '0.5px' }}>TOTAL SECTOR REVENUE</span>
             <span style={{ fontSize: '1.15rem', color: 'var(--accent-blue)', fontWeight: 700 }}>{formatCurrency(totalSectorRevenue)}</span>
           </div>

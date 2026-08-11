@@ -65,11 +65,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Building2 size={20} color="#38bdf8" />
           </div>
           <div>
-            <h1 style={{ fontSize: '1.1rem', color: '#fff', margin: 0, fontWeight: 800, letterSpacing: '-0.3px' }}>
-              NonProfit<span style={{ color: '#38bdf8' }}>Explorer</span>
+            <h1 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', margin: 0, fontWeight: 800, letterSpacing: '-0.3px' }}>
+              NonProfit<span style={{ color: 'var(--accent-blue)' }}>Explorer</span>
             </h1>
             <p style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', margin: 0, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-              <ShieldCheck size={12} color="#10b981" /> Form 990 Intelligence
+              <ShieldCheck size={12} color="var(--accent-emerald)" /> Form 990 Intelligence
             </p>
           </div>
         </div>
@@ -96,15 +96,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 padding: '0.65rem 0.85rem',
                 borderRadius: '8px',
                 border: 'none',
-                background: isActive ? 'rgba(56, 189, 248, 0.12)' : 'transparent',
-                color: isActive ? '#fff' : 'var(--text-secondary)',
+                background: isActive ? 'rgba(2, 132, 199, 0.12)' : 'transparent',
+                color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
                 fontWeight: isActive ? 700 : 500,
                 fontSize: '0.85rem',
                 cursor: 'pointer',
                 transition: 'all 0.15s ease'
               }}
               onMouseEnter={(e) => {
-                if (!isActive) e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
+                if (!isActive) e.currentTarget.style.background = 'var(--bg-card-hover)';
               }}
               onMouseLeave={(e) => {
                 if (!isActive) e.currentTarget.style.background = 'transparent';
@@ -114,7 +114,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <Icon size={17} color={isActive ? item.accent : 'var(--text-muted)'} />
                 <span>{item.label}</span>
               </div>
-              {isActive && <ChevronRight size={14} color="#38bdf8" />}
+              {isActive && <ChevronRight size={14} color="var(--accent-blue)" />}
             </button>
           );
         })}
@@ -125,14 +125,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
         className="glass-card"
         style={{
           padding: '0.9rem',
-          background: 'rgba(15, 23, 42, 0.8)',
-          border: '1px solid rgba(56, 189, 248, 0.25)',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border-subtle)',
           display: 'flex',
           flexDirection: 'column',
           gap: '0.6rem'
         }}
       >
-        <span style={{ fontSize: '0.68rem', color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.8px', fontWeight: 700 }}>
+        <span style={{ fontSize: '0.68rem', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.8px', fontWeight: 700 }}>
           ACTIVE 990 PROFILE
         </span>
 
@@ -144,8 +144,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
           }}
           style={{
             width: '100%',
-            background: 'rgba(11, 15, 25, 0.9)',
-            color: '#fff',
+            background: 'var(--bg-main)',
+            color: 'var(--text-primary)',
             border: '1px solid var(--border-subtle)',
             padding: '0.45rem 0.6rem',
             borderRadius: '6px',
@@ -156,15 +156,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
           }}
         >
           {allNonProfits.map((np) => (
-            <option key={np.id} value={np.id} style={{ background: '#0f172a', color: '#fff' }}>
+            <option key={np.id} value={np.id} style={{ background: 'var(--bg-card)', color: 'var(--text-primary)' }}>
               {np.name} ({np.nteeCategory})
             </option>
           ))}
         </select>
 
         <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', display: 'flex', justifyContent: 'space-between', marginTop: '0.2rem' }}>
-          <span>Revenue: <strong style={{ color: '#fff' }}>{formatCurrency(currentNonProfit.totalRevenue)}</strong></span>
-          <span>Score: <strong style={{ color: '#10b981' }}>{currentNonProfit.overallScore}/10</strong></span>
+          <span>Revenue: <strong style={{ color: 'var(--text-primary)' }}>{formatCurrency(currentNonProfit.totalRevenue)}</strong></span>
+          <span>Score: <strong style={{ color: 'var(--accent-emerald)' }}>{currentNonProfit.overallScore}/10</strong></span>
         </div>
       </div>
     </aside>
