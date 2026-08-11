@@ -50,16 +50,20 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
   const maxX = 10.0;
   const getX = (val: number) => padding.left + ((val - minX) / (maxX - minX)) * chartWidth;
 
-  // Y Scale: Program Efficiency 60% to 100%
-  const minY = 60;
+  // Y Scale: Program Efficiency 50% to 100%
+  const minY = 50;
   const maxY = 100;
   const getY = (val: number) => padding.top + chartHeight - ((val - minY) / (maxY - minY)) * chartHeight;
 
-  // Max Revenue for bubble radius sizing (Radius 8px to 32px)
-  const maxRevenue = Math.max(...allNonProfits.map((np) => np.totalRevenue), 1);
+  // Smooth Logarithmic Bubble Scaling (Radius 8px to 26px) across revenue ranges ($1M to $30B+)
+  const minRevenue = 1000000;
+  const maxRevenue = Math.max(...allNonProfits.map((np) => np.totalRevenue), 10000000);
   const getRadius = (rev: number) => {
-    const scale = Math.sqrt(rev) / Math.sqrt(maxRevenue);
-    return Math.max(7, Math.min(32, scale * 32));
+    const minLog = Math.log10(minRevenue);
+    const maxLog = Math.log10(maxRevenue);
+    const valLog = Math.log10(Math.max(rev, minRevenue));
+    const normalized = Math.max(0, Math.min(1, (valLog - minLog) / (maxLog - minLog || 1)));
+    return Math.round(8 + normalized * 18);
   };
 
   const formatCurrency = (val: number) => {
@@ -154,7 +158,7 @@ export const SectorOverview: React.FC<SectorOverviewProps> = ({
         <div style={{ width: '100%', overflowX: 'auto' }}>
           <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} style={{ width: '100%', height: 'auto', background: 'rgba(11, 15, 25, 0.9)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
             {/* Background Grid Lines */}
-            {[60, 70, 80, 90, 100].map((val) => {
+            {[50, 60, 70, 80, 90, 100].map((val) => {
               const y = getY(val);
               return (
                 <g key={`y-grid-${val}`}>
