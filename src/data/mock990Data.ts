@@ -539,11 +539,17 @@ export const mockNonProfits: NonProfitData[] = [
 ];
 
 import { nonprofits300Data } from './generate300NonProfits';
+import { compiledLiveNonProfits } from './compiledLiveData';
 
-// Deduplicate or append generated dataset to give 300+ nonprofits
+// Combine featured, compiled live ProPublica API records, and generated dataset
 export const allNonProfits: NonProfitData[] = [
   ...mockNonProfits,
-  ...nonprofits300Data.filter(p => !mockNonProfits.some(m => m.name.toLowerCase() === p.name.toLowerCase()))
+  ...compiledLiveNonProfits,
+  ...nonprofits300Data.filter(
+    (p) =>
+      !mockNonProfits.some((m) => m.name.toLowerCase() === p.name.toLowerCase()) &&
+      !compiledLiveNonProfits.some((l) => l.name.toLowerCase() === p.name.toLowerCase())
+  )
 ];
 
 export { mockNonProfits as featuredNonProfits };
